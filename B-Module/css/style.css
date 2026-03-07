@@ -1,0 +1,176 @@
+*{margin:0; padding:0; box-sizing:border-box; list-style:none; text-decoration:none; color:inherit; scrollbar-width: none;}
+
+:root{
+  --red: #c12d3d;
+  --lightred: #db4c5a;
+  --blue: #64b0b0;
+  --smallblue: #7fb9b9;
+  --lightblue: #60ecec;
+}
+
+.fz08em{font-size: .8em;}
+.mfont{font-size: 2.3em;}
+.tac{text-align: center;}
+
+.flex{display: flex;}
+.aic{align-items: center;}
+.jcc{justify-content: center;}
+.center{display: flex; justify-content: center; align-items: center;}
+.right{display: flex; justify-content: start; align-items: center;}
+.left{display: flex; justify-content: end; align-items: center;}
+
+.p10{padding: 10px;}
+.pl10{padding-left: 10px;}
+.pr10{padding-right: 10px;}
+
+.m10{margin: 10px;}
+.ml10{margin-left: 10px;}
+.mr10{margin-right: 10px;}
+
+.barBox{display: flex; justify-content: space-between; align-items: center; width: 107%; margin: 0 auto; margin-left: 10px;}
+.barBox span{width: 480px; height: 2px; border-top: 1px dotted var(--blue); }
+.barBox p{color: var(--red); font-size: 21px}
+
+.container{position: relative; width: 100%; min-height: 100vh;}
+/* 초기화 */
+
+
+/* 헤더 */
+
+header{position: absolute; width: 100%; height: 100px; font-size: .8em; color: #fff; z-index: 2;}
+header .headerIn{display: flex; justify-content: space-between; align-items: center; margin: 0 auto; width: 60%; height: 100px;}
+header .headerIn img{width: 150px; height: 50px;}
+
+header .push{display: flex; justify-content: space-between; width: 600px;}
+header .headerBtns{display: flex; justify-content: space-between; width: 130px;}
+header .dropdown{height: 10px;}
+header .dropdown>ul{display: flex; justify-content: space-between; width: 350px;}
+
+header .ul{display: flex; justify-content: space-evenly; align-items: center; flex-direction: column; height: 0px; overflow: hidden; transition: .3s;}
+header .dropdown>ul>li>a:hover {color: var(--lightblue);}
+header .dropdown li:has(.ul:hover) > a{color: var(--lightblue);}
+header .ul>li:hover{color: var(--lightblue);}
+
+header .dropdown>ul>li:hover .ul{height: 90px;}
+
+header .headerBtns a{transition: .2s;}
+header .headerBtns a:hover{color: var(--lightblue);}
+
+/* 헤더 */
+
+
+
+/* 슬라이드 */
+
+#slide{width: 100%; height: 850px; overflow: hidden; z-index: -1;}
+#slide img{width: 100%; height: 850px;}
+
+#slide ul{display: flex; width: 400%; animation: slide 10s ease-in-out infinite;}
+#slide li{width: 100%;}
+
+#slide .progressBar{position: relative; left: 80%; bottom: 7%; display: flex; gap: 10px;}
+#slide .progressBar span{position: relative; width: 100px; height: 6px; border-radius: 20px; background:#ddd; overflow: hidden;}
+#slide .progressBar span::after{content:""; position:absolute; left:0; top:0; width: 0%; height:100%; background: var(--red); animation:gage 10s linear infinite;}
+
+#slide .progressBar span:nth-child(1)::after{animation-delay:0s;}
+#slide .progressBar span:nth-child(2)::after{animation-delay:3.33s;}
+#slide .progressBar span:nth-child(3)::after{animation-delay:6.66s;}
+
+#slide:hover ul{animation-play-state: paused;}
+#slide:hover .progressBar span::after{animation-play-state: paused;}
+
+@keyframes gage{
+  0%{width: 0%;}
+  30%{width: 100%; opacity: 1;}
+  31%{width: 100%; opacity: 0;}
+  100%{width: 100%; opacity: 0;}
+}
+
+@keyframes slide {
+  0%{transform: translateX(0%);}
+  29%{transform: translateX(0%);}
+
+  34%{transform: translateX(-25%);}
+  61%{transform: translateX(-25%);}
+
+  66%{transform: translateX(-50%);}
+  93%{transform: translateX(-50%);}
+
+  98%{transform: translateX(-75%);}
+  99.999%{transform: translateX(-75%);}
+  100%{transform: translateX(0%);}
+}
+
+/* 슬라이드 */
+
+
+
+/* 공지사항 */
+
+#notice{width: 100%; height: 600px;}
+#notice .noticeContent{display: none; width: 1200px; height: 390px; margin: 0 auto; border: 2px solid var(--blue); border-radius: 20px; font-size: .9em;}
+#notice .noticeContent li{display: flex; justify-content: space-between; margin: 0 auto; padding: 10px; margin-top: 16px; width: 90%; border: 1px solid var(--smallblue); border-radius: 10px;}
+
+#notice .noticeIn{width: 1100px; margin: 0 auto;}
+#notice .noticeIn h2{margin: 10px 0 0 8px; color: var(--blue);}
+
+#notice .notice3{height: 480px;}
+#notice .notice3 li{padding: 12px;}
+
+#notice li{cursor: pointer; transition: transform .3s;}
+#notice li:hover{transform: translateY(-10%); outline: 2px solid var(--blue);}
+
+#notice .noticeBtn{width: max-content; padding: 3px 0 15px 0px;}
+#notice .noticeBtn label{border: 2px solid var(--lightred); padding: 4px; margin-left: 10px; border-radius: 15px 5px 15px 5px; cursor: pointer; font-size: .88em; transition: .2s;}
+#notice .noticeBtn label:hover{color: var(--smallblue);}
+
+
+#notice .noticeBtn:has(#nomal:checked) ~ .notice1{display: block;}
+#notice .noticeBtn:has(#event:checked) ~ .notice2{display: block;}
+#notice .noticeBtn:has(#get:checked) ~ .notice3{display: block;}
+
+#notice .noticeBtn:has(#nomal:checked) > label[for="nomal"]{color: var(--blue); font-weight: bold;}
+#notice .noticeBtn:has(#event:checked) > label[for="event"]{color: var(--blue); font-weight: bold;}
+#notice .noticeBtn:has(#get:checked) > label[for="get"]{color: var(--blue); font-weight: bold;}
+
+/* 공지사항 */
+
+
+/* 프로그램 */
+
+#program{width: 100%; height: 700px; margin-top: 50px;}
+#program .programIn{width: 1100px; margin: 0 auto;}
+#program h2{color: var(--blue); margin: 0px 0px 0px 7px;}
+
+#program img{width: 250px; height: 250px; clip-path: polygon(0% 15%, 50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%);}
+
+#program .itemBox{width: 1100px; margin-top: 40px;}
+#program .boxFlex1{display: flex; justify-content: space-between; width: 1050px;}
+#program .boxFlex2{display: flex; justify-content: space-around; width: 1050px; margin-left: 125px; margin-top: -30px;}
+
+#program .item{position: relative; clip-path: polygon(0% 15%, 50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%); filter: drop-shadow(0px 10px 30px var(--smallblue)); transition: .3s;}
+
+#program .item:hover{scale: 1.05;}
+#program .itemBox:has(.item:hover) .item:not(:hover) {scale: .95;}
+
+#program .item:hover .background{width: 100%;}
+#program .background{position: absolute; width: 0%; height: 100%; top: 0; background-color: rgba(0, 0, 0, 0.308); clip-path: polygon(0% 15%, 50% 0%, 100% 15%, 100% 83%, 50% 98%, 0% 83%); transition: .3s;}
+
+#program label{position: absolute; top: 0; left: 50%; top: 50%; width: 200px; text-align: center; transform: translateX(-50%) translateY(-50%); font-size: .9em; font-weight: bold; color: #fff; cursor: pointer;}
+
+
+/* 프로그램 */
+
+
+/* 모달 */
+.modal{position: fixed; inset: 30% 15%; width: 330px; height: 450px; border: 1px solid #ffffff; border-radius: 15px; z-index: 1;}
+.modal img{width: 328px; border-radius: 15px 15px 0 0;}
+.modal p{font-size: .85em; text-align: center; margin-top: -5px; background-color: lightblue;}
+.modal ul{padding: 15px; height: 184px; background-color: lightblue; border-radius: 0px 0px 15px 15px;}
+.modal ul li{font-size: .8em; padding-top: .4em;}
+.modal label{width: 60px; font-size: .9em; cursor: pointer; margin: 0 auto; display: flex; justify-content: center; margin-top: -27px;}
+.modal label:hover{font-weight: bold;}
+
+.container:has(#check:checked) .modal{display: none;}
+/* 모달 */
+
