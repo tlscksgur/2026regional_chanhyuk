@@ -72,9 +72,9 @@ header .headerBtns a:hover{color: var(--lightblue);}
 #slide .progressBar span{position: relative; width: 100px; height: 6px; border-radius: 20px; background:#ddd; overflow: hidden;}
 #slide .progressBar span::after{content:""; position:absolute; left:0; top:0; width: 0%; height:100%; background: var(--red); animation:gage 10s linear infinite;}
 
-#slide .progressBar span:nth-child(1)::after{animation-delay:0s;}
-#slide .progressBar span:nth-child(2)::after{animation-delay:3.33s;}
-#slide .progressBar span:nth-child(3)::after{animation-delay:6.66s;}
+#slide .progressBar span:nth-child(1)::after{animation-delay: 0s;}
+#slide .progressBar span:nth-child(2)::after{animation-delay: 3.33s;}
+#slide .progressBar span:nth-child(3)::after{animation-delay: 6.66s;}
 
 #slide:hover ul{animation-play-state: paused;}
 #slide:hover .progressBar span::after{animation-play-state: paused;}
@@ -102,7 +102,6 @@ header .headerBtns a:hover{color: var(--lightblue);}
 }
 
 /* 슬라이드 */
-
 
 
 /* 공지사항 */
@@ -138,17 +137,17 @@ header .headerBtns a:hover{color: var(--lightblue);}
 
 /* 프로그램 */
 
-#program{width: 100%; height: 700px; margin-top: 50px;}
+#program{position: relative; width: 100%; height: 700px; margin-top: 50px;}
 #program .programIn{width: 1100px; margin: 0 auto;}
 #program h2{color: var(--blue); margin: 0px 0px 0px 7px;}
 
-#program img{width: 250px; height: 250px; clip-path: polygon(0% 15%, 50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%);}
+#program .item img{width: 250px; height: 250px; clip-path: polygon(0% 15%, 50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%);}
 
 #program .itemBox{width: 1100px; margin-top: 40px;}
 #program .boxFlex1{display: flex; justify-content: space-between; width: 1050px;}
 #program .boxFlex2{display: flex; justify-content: space-around; width: 1050px; margin-left: 125px; margin-top: -30px;}
 
-#program .item{position: relative; clip-path: polygon(0% 15%, 50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%); filter: drop-shadow(0px 10px 30px var(--smallblue)); transition: .3s;}
+#program .item{position: relative; clip-path: polygon(0% 15%, 50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%); filter: drop-shadow(0px 3px 3px var(--smallblue)); transition: .3s;}
 
 #program .item:hover{scale: 1.05;}
 #program .itemBox:has(.item:hover) .item:not(:hover) {scale: .95;}
@@ -158,19 +157,54 @@ header .headerBtns a:hover{color: var(--lightblue);}
 
 #program label{position: absolute; top: 0; left: 50%; top: 50%; width: 200px; text-align: center; transform: translateX(-50%) translateY(-50%); font-size: .9em; font-weight: bold; color: #fff; cursor: pointer;}
 
+#program .itemModal{position: fixed; inset: 0; /* top: 0; left: 0; bottom: 0; right: 0; */ width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.219); z-index: 12;}
+#program .realItemModal{position: absolute; left: 50%; transform: translateX(-50%) translateY(-50%); top: 50%; display: block; width: max-content; height: 400px; background-color: #ddd; z-index: 11; border-radius: 20px;}
+#program .realItemModal p{font-weight: bold; padding: 10px; text-align: center;}
+#program .realItemModal label{width: 70px; margin-top: 170px; transition: .2s; color: var(--red);}
+#program .realItemModal label:hover{color: var(--blue);}
+
+#program .itemModal img{width: 100%; height: 300px; border-radius: 20px 20px 0 0;}
+
+#program .itemModal{display: none;}
+#program .itemBox:has(#x:checked) .itemModal{display: none;}
+
+#program .itemBox:has(#item1:checked) .Imodal1{display: block;}
+#program .itemBox:has(#item2:checked) .Imodal2{display: block;}
+#program .itemBox:has(#item3:checked) .Imodal3{display: block;}
+#program .itemBox:has(#item4:checked) .Imodal4{display: block;}
+#program .itemBox:has(#item5:checked) .Imodal5{display: block;}
+#program .itemBox:has(#item6:checked) .Imodal6{display: block;}
+#program .itemBox:has(#item7:checked) .Imodal7{display: block;}
+#program .itemBox:has(#item8:checked) .Imodal8{display: block;}
+
 
 /* 프로그램 */
 
 
-/* 모달 */
-.modal{position: fixed; inset: 30% 15%; width: 330px; height: 450px; border: 1px solid #ffffff; border-radius: 15px; z-index: 1;}
-.modal img{width: 328px; border-radius: 15px 15px 0 0;}
-.modal p{font-size: .85em; text-align: center; margin-top: -5px; background-color: lightblue;}
-.modal ul{padding: 15px; height: 184px; background-color: lightblue; border-radius: 0px 0px 15px 15px;}
-.modal ul li{font-size: .8em; padding-top: .4em;}
-.modal label{width: 60px; font-size: .9em; cursor: pointer; margin: 0 auto; display: flex; justify-content: center; margin-top: -27px;}
-.modal label:hover{font-weight: bold;}
 
-.container:has(#check:checked) .modal{display: none;}
+/* 자주찾는 메뉴 영역 */
+
+
+
+/* 자주찾는 메뉴 영역 */
+
+
+
+/* 모달 */
+#modal{animation: modal .7s ease-in; position: fixed; inset: 30% 15%; transition: 1s; width: 330px; height: 450px; border: 1px solid #ffffff; border-radius: 15px; z-index: 1;}
+#modal img{width: 328px; border-radius: 15px 15px 0 0;}
+#modal p{font-size: .85em; text-align: center; margin-top: -5px; background-color: lightblue;}
+#modal ul{padding: 15px; height: 184px; background-color: lightblue; border-radius: 0px 0px 15px 15px;}
+#modal ul li{font-size: .8em; padding-top: .4em;}
+#modal label{width: 60px; font-size: .9em; cursor: pointer; margin: 0 auto; display: flex; justify-content: center; margin-top: -27px;}
+#modal label:hover{font-weight: bold;}
+
+.container:has(#check:checked) #modal{display: none;}
+
+@keyframes modal {
+  from{transform: scale(1.1);}
+  to{transform: scale(1);}
+}
+
 /* 모달 */
 

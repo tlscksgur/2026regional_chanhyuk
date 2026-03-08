@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./공통제공파일/fontawesome/css/all.min.css">
   <title>Document</title>
 </head>
 <body>
   <div class="container">
-    <!-- <div class="modal">
+    <!-- <div id="modal">
       <img src="./images/images (121).jpg" alt="img" title="img">
       <p>2025년 지방기능경기대회 참가원서<br> 접수 공고사항을 아래 같이 알려드립니다.</p>
       <ul>
@@ -189,12 +190,21 @@
         </div>
 
         <div class="itemBox">
+          <input type="radio" name="pro" id="x" hidden>
           <div class="boxFlex1">
+
             <div class="item item1">
               <img src="./프로그램/1.jpg" alt="item1" title="item1">
               <div class="background">
                 <input type="radio" name="pro" id="item1" hidden>
                 <label for="item1" class="label1">힐링클래식</label>
+              </div>
+            </div>
+            <div class="itemModal Imodal1">
+              <div class="realItemModal">
+                <img src="./프로그램/1.jpg" alt="item1" title="item1">
+                <p>피아니스트 김미정과 함께하는 힐링 클래식</p>
+                <label for="x">[닫기]</label>
               </div>
             </div>
             
@@ -205,6 +215,13 @@
                 <label for="item2" class="label2">도란도란</label>
               </div>
             </div>
+            <div class="itemModal Imodal2">
+              <div class="realItemModal">
+                <img src="./프로그램/2.png" alt="item2" title="item2">
+                <p>도란도란] 나를 찾아가는 마음챙김 그림책테라피</p>
+                <label for="x">[닫기]</label>
+              </div>
+            </div>
 
             <div class="item item3">
               <img src="./프로그램/3.jpg" alt="item3" title="item3">
@@ -213,12 +230,26 @@
                 <label for="item3" class="label3">신흥어울마당작은</label>
               </div>
             </div>
+            <div class="itemModal Imodal3">
+              <div class="realItemModal">
+                <img src="./프로그램/3.jpg" alt="item3" title="item3">
+                <p>신흥어울마당작은]2024년 하반기 프로그램 ' 뚝딱 한국사'</p>
+                <label for="x">[닫기]</label>
+              </div>
+            </div>
 
             <div class="item item4">
               <img src="./프로그램/4.png" alt="item4" title="item4">
               <div class="background">
                 <input type="radio" name="pro" id="item4" hidden>
                 <label for="item4" class="label4">[수주]</label>
+              </div>
+            </div>
+            <div class="itemModal Imodal4">
+              <div class="realItemModal">
+                <img src="./프로그램/4.png" alt="item4" title="item4">
+                <p>[수주](성인)마을미디어 교육생 모집</p>
+                <label for="x">[닫기]</label>
               </div>
             </div>
           </div>
@@ -231,12 +262,26 @@
                 <label for="item5" class="label5">나를 치유하는 명화</label>
               </div>
             </div>
+            <div class="itemModal Imodal5">
+              <div class="realItemModal">
+                <img src="./프로그램/5.jpg" alt="item5" title="item5">
+                <p>나를 치유하는 명화</p>
+                <label for="x">[닫기]</label>
+              </div>
+            </div>
             
             <div class="item item6">
               <img src="./프로그램/6.jpg" alt="item6" title="item6">
               <div class="background">
                 <input type="radio" name="pro" id="item6" hidden>
                 <label for="item6" class="label6">[문화가 있는 날]</label>
+              </div>
+            </div>
+            <div class="itemModal Imodal6">
+              <div class="realItemModal">
+                <img src="./프로그램/6.jpg" alt="item6" title="item6">
+                <p>[문화가 있는 날] 푸른 하늘이 좋아요!</p>
+                <label for="x">[닫기]</label>
               </div>
             </div>
 
@@ -247,6 +292,13 @@
                 <label for="item7" class="label7">책 속에서</label>
               </div>
             </div>
+            <div class="itemModal Imodal7">
+              <div class="realItemModal">
+                <img src="./프로그램/7.jpg" alt="item7" title="item7">
+                <p>책 속에서 사람을 만나다 </p>
+                <label for="x">[닫기]</label>
+              </div>
+            </div>
 
             <div class="item item8">
               <img src="./프로그램/8.jpg" alt="item8" title="item8">
@@ -255,11 +307,47 @@
                 <label for="item8" class="label8">방구석 북토크</label>
               </div>
             </div>
+            <div class="itemModal Imodal8">
+              <div class="realItemModal">
+                <img src="./프로그램/8.jpg" alt="item8" title="item8">
+                <p>서울 문화의 밤(8월) 행사 - 국지승 그림책 작가와 방구석 북토크</p>
+                <label for="x">[닫기]</label>
+              </div>
+            </div>
 
           </div>
         </div>
 
       </div>
+    </section>
+
+    <section id="bookMark">
+      <ul>
+        <li>
+          <span class="fa fa-book"></span>
+          <p></p>
+        </li>
+        <li>
+          <span class="fa fa-left-long"></span>
+          <p></p>
+        </li>
+        <li>
+          <span class="fa fa-chair"></span>
+          <p></p>
+        </li>
+        <li>
+          <span class="fa fa-book-bookmark"></span>
+          <p></p>
+        </li>
+        <li>
+          <span class="fab fa-bilibili"></span>
+          <p></p>
+        </li>
+        <li>
+          <span class="fa fa-book-atlas"></span>
+          <p></p>
+        </li>
+      </ul>
     </section>
 
   </div>
