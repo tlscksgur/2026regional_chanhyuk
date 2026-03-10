@@ -7,3 +7,8 @@ get('/', function() {
 get('/sub01', function() {
   views("sub01");
 });
+
+get('/libraryLive', function() {
+  views("user/libraryLive");
+});
+

@@ -22,8 +22,8 @@
                     <span class="minus">-</span>
                   </div>
                   <ul>
-                    <li><a href="#"><a href="/sub01" style="z-index: 100;">도서관소개</a></a></li>
-                    <li><a href="#">도서관현황</a></li>
+                    <li><a href="/sub01" style="z-index: 100;">도서관소개</a></li>
+                    <li><a href="/libraryLive">도서관현황</a></li>
                   </ul>
                 </div>
 
