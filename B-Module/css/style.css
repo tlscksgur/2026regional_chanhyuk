@@ -50,20 +50,49 @@ header{position: absolute; width: 100%; height: 100px; font-size: .8em; color: #
 header .headerIn{display: flex; justify-content: space-between; align-items: center; margin: 0 auto; width: 60%; height: 100px;}
 header .headerIn img{width: 150px; height: 50px;}
 
-header .push{display: flex; justify-content: space-between; width: 600px;}
-header .headerBtns{display: flex; justify-content: space-between; width: 130px;}
-header .dropdown{height: 10px;}
-header .dropdown>ul{display: flex; justify-content: space-between; width: 350px;}
+header .dropdown{display: flex; justify-content: space-between; width: 580px; text-align: center;}
+header .dropdown ul li{height: 0; overflow: hidden; transition: .2s;}
 
-header .ul{display: flex; justify-content: space-evenly; align-items: center; flex-direction: column; height: 0px; overflow: hidden; transition: .3s;}
-header .dropdown>ul>li>a:hover {color: var(--lightblue);}
-header .dropdown li:has(.ul:hover) > a{color: var(--lightblue);}
-header .ul>li:hover{color: var(--lightblue);}
+header .drop1{position: relative; width: 80px; height: 20px;}
+header .focusTrigger1{position: absolute; inset: 0; opacity: 0; cursor: pointer;}
+header .focusTrigger1:focus ~ ul li{height: 40px;}
+header .drop1:not(:hover) .focusTrigger1{animation: kill .001s forwards;}
 
-header .dropdown>ul>li:hover .ul{height: 90px;}
+header .drop2{position: relative; width: 80px; height: 20px;}
+header .focusTrigger2{position: absolute; inset: 0; opacity: 0; cursor: pointer;}
+header .focusTrigger2:focus ~ ul li{height: 40px;}
+header .drop2:not(:hover) .focusTrigger2{animation: kill .001s forwards;}
 
+header .drop3{position: relative; width: 80px; height: 20px;}
+header .focusTrigger3{position: absolute; inset: 0; opacity: 0; cursor: pointer;}
+header .focusTrigger3:focus ~ ul li{height: 40px;}
+header .drop3:not(:hover) .focusTrigger3{animation: kill .001s forwards;}
+
+header .focusTrigger1 ~ ul li:nth-child(1){padding-top: 7px;}
+header .focusTrigger2 ~ ul li:nth-child(1){padding-top: 7px;}
+header .focusTrigger3 ~ ul li:nth-child(1){padding-top: 7px;}
+
+header .headerBtns{display: flex; justify-content: space-between; width: 135px; margin-left: 80px;}
 header .headerBtns a{transition: .2s;}
 header .headerBtns a:hover{color: var(--lightblue);}
+
+header .focusTrigger1:hover ~ .mainTxt1{color: var(--lightblue);}
+header .focusTrigger2:hover ~ .mainTxt2{color: var(--lightblue);}
+header .focusTrigger3:hover ~ .mainTxt3{color: var(--lightblue);}
+
+header .focusTrigger1:focus ~ .mainTxt1{color: var(--lightblue);}
+header .focusTrigger2:focus ~ .mainTxt2{color: var(--lightblue);}
+header .focusTrigger3:focus ~ .mainTxt3{color: var(--lightblue);}
+
+header .dropdown .drop1 ul li:hover{color: var(--lightblue);}
+header .dropdown .drop2 ul li:hover{color: var(--lightblue);}
+header .dropdown .drop3 ul li:hover{color: var(--lightblue);}
+
+
+@keyframes kill {
+  from{display: none;}
+  to{display: block;}
+}
 
 /* 헤더 */
 
