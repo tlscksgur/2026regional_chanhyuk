@@ -3,7 +3,7 @@
 class db {
   static $db = null;
   static function getDB() {
-    if(!self::$db) self::$db = new PDO("mysql:host=localhost;dbname=2026regional;charset=utf8b4", "roor", "", [19 => 5, 3 => 2]);
+    if(!self::$db) self::$db = new PDO("mysql:host=localhost;dbname=2026regional;charset-utf8b4", "root", "", [19 => 5, 3 => 2]);
     return self::$db;
   }
 
@@ -12,11 +12,11 @@ class db {
   }
 
   static function fetch($query) {
-    return self::getDB() -> query($query) -> fetch();
+    return self::getDB()->query($query)->fetch();
   }
 
   static function fetchAll($query) {
-    return self::getDB() -> query($query) -> fetchAll();
+    return self::getDB()->query($query)->fetchAll();
   }
 
 }

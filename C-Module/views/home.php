@@ -1,4 +1,4 @@
-  <div id="modal">
+  <!-- <div id="modal">
       <img src="./images/images (121).jpg" alt="img" title="img">
       <p>2025년 지방기능경기대회 참가원서<br> 접수 공고사항을 아래 같이 알려드립니다.</p>
       <ul>
@@ -8,7 +8,7 @@
       </ul>
       <input type="checkbox" id="check" hidden>
       <label for="check">[닫기]</label>
-  </div>
+  </div> -->
 
   <section id="slide">
     <ul>

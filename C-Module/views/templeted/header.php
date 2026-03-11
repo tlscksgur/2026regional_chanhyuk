@@ -54,10 +54,73 @@
                 </div>
 
               <div class="headerBtns">
-                <a href="#">로그인</a>
-                <a href="#">회원가입</a>
+                <?php if(!ss()): ?>
+                  <a href="#" class="openLogin">로그인</a>
+                  <a href="#" class="openJoin">회원가입</a>
+                <?php elseif(ss() -> id === "admin"): ?>
+                  <p><?= ss() -> name ?></p>
+                  <a href="/logout">로그아웃</a>
+                <?php else: ?>
+                  <p><?= ss() -> name ?></p>
+                  <p><?= ss() -> id ?></p>
+                  <a href="/logout">로그아웃</a>
+                <?php endif; ?>
               </div>
             </div>
           </div>
       </div>
     </header>
+  
+    <div id="join">
+      <div class="joinBackground"></div>
+      <div class="joinIn">
+        <div class="joinTextBox">
+          <h3>회원가입 / Sign Up</h3>
+          <span class="dottedBar"></span>
+          <button class="close">X</button>
+        </div>
+        <form action="/join" method="post">
+
+          <div class="join1">
+            <p class="fz08em C555">아이디를 입력해주세요.</p>
+            <input type="text" name="id" class="borderNone" required>
+          </div>
+
+          <div class="join2">
+            <p class="fz08em C555">비밀번호를 입력해주세요.</p>
+            <input type="password" name="pw" class="borderNone" required>
+          </div>
+
+          <div class="join3">
+            <p class="fz08em C555">이름을 입력해주세요.</p>
+            <input type="text" name="name" class="borderNone" required>
+          </div>
+          <input type="submit" value="회원가입">
+        </form>
+      </div>
+    </div>
+
+    <div id="login">
+      <div class="loginBackground"></div>
+      <div class="loginIn">
+        <div class="loginTextBox">
+          <h3>로그인 / Login</h3>
+          <span class="dottedBar"></span>
+          <button class="close">X</button>
+        </div>
+        <form action="/login" method="post">
+
+          <div class="login1">
+            <p class="fz08em C555">아이디를 입력해주세요.</p>
+            <input type="text" name="id" class="borderNone" required>
+          </div>
+
+          <div class="login2">
+            <p class="fz08em C555">비밀번호를 입력해주세요.</p>
+            <input type="password" name="pw" class="borderNone" required>
+          </div>
+
+          <input type="submit" value="로그인">
+        </form>
+      </div>
+    </div>
