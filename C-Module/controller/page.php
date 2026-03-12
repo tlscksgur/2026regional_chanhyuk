@@ -18,6 +18,18 @@ get('/libraryLive', function() {
 });
 
 
+get('/dataRoom', function() {
+  $bookData = DB::fetchAll("
+    SELECT d.*, r.book_id as rented
+    FROM dataroom d
+    left join rent r
+    on d.idx = r.book_id
+    and r.return_date >= CURDATE()
+  ");
+  views("user/dataRoom", compact("bookData"));
+});
+
+
 
 post('/join', function() {
   extract($_POST);
@@ -41,4 +53,23 @@ post('/login', function() {
   if(!$loginUser) { back("아이디 또는 비밀번호가 일치하지 않습니다."); return false; }
   $_SESSION['ss'] = $loginUser;
   back("로그인 되었습니다!");
+});
+
+
+post('/rentBook', function() {
+
+  $idx = $_POST['idx'];
+  $userId = ss()->idx;
+
+  DB::exec("INSERT into rent (book_id, user_id, rent_date, return_date) values ('$idx', '$userId', CURDATE(), DATE_ADD(CURDATE(), INTERVAL 9 DAY))");
+  move("/dataRoom", "대출되었습니다.");
+});
+
+post('/returnBook', function() {
+  extract($_POST);
+
+  DB::exec("DELETE FROM rent where book_id = '$idx'");
+  
+  move("/dataRoom", "반납되었습니다.");
+
 });
