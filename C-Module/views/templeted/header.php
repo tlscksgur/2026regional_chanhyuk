@@ -53,8 +53,13 @@
                     <span class="minus">-</span>
                   </div>
                   <ul>
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">마이페이지</a></li>
+                    <?php if(ss()): ?>
+                      <li><a href="#">회원가입</a></li>
+                      <li><a href="/myPage">마이페이지</a></li>
+                    <?php else: ?>
+                      <li><a href="#">회원가입</a></li>
+                      <li><a href="#">마이페이지</a></li>
+                    <?php endif; ?>
                   </ul>
                 </div>
 

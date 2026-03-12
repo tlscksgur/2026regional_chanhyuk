@@ -29,6 +29,14 @@ get('/dataRoom', function() {
   views("user/dataRoom", compact("bookData"));
 });
 
+get('/myPage', function() {
+  $ssId = ss() -> idx;
+
+  $myPage =  DB::fetch("SELECT * from rent where user_id = $ssId");
+
+  views("user/myPage", compact("myPage"));
+});
+
 
 
 post('/join', function() {
