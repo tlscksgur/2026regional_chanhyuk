@@ -57,22 +57,21 @@ header .dropdown ul li{height: 0; overflow: hidden; transition: .2s;}
 header .drop1{position: relative; width: 80px; height: 20px;}
 header .focusTrigger1{position: absolute; inset: 0; opacity: 0; cursor: pointer;}
 header .focusTrigger1:focus ~ ul li{height: 40px;}
-header .drop1:not(:hover) .focusTrigger1{animation: kill .001s forwards;}
-
-
-/* header .focusTrigger1 ~ ul:where(:active) li{ height: 40px; }
-header .focusTrigger1 ~ ul:where(:hover) li{ height: 40px; } */
+header .drop1:not(:hover) .focusTrigger1{animation: kill .01s forwards;}
+header .focusTrigger1 ~ ul:where(:active) li{height: 40px;}
 
 
 header .drop2{position: relative; width: 80px; height: 20px;}
 header .focusTrigger2{position: absolute; inset: 0; opacity: 0; cursor: pointer;}
 header .focusTrigger2:focus ~ ul li{height: 40px;}
-header .drop2:not(:hover) .focusTrigger2{animation: kill .001s forwards;}
+header .drop2:not(:hover) .focusTrigger2{animation: kill .01s forwards;}
+header .focusTrigger2 ~ ul:where(:active) li{height: 40px;}
 
 header .drop3{position: relative; width: 80px; height: 20px;}
 header .focusTrigger3{position: absolute; inset: 0; opacity: 0; cursor: pointer;}
 header .focusTrigger3:focus ~ ul li{height: 40px;}
-header .drop3:not(:hover) .focusTrigger3{animation: kill .001s forwards;}
+header .drop3:not(:hover) .focusTrigger3{animation: kill .01s forwards;}
+header .focusTrigger3 ~ ul:where(:active) li{height: 40px;}
 
 header .focusTrigger1 ~ ul li:nth-child(1){padding-top: 7px;}
 header .focusTrigger2 ~ ul li:nth-child(1){padding-top: 7px;}
@@ -104,6 +103,7 @@ header .minus{position: absolute; right: -18px; display: block; z-index: -2;}
 header .focusTrigger1:focus ~ .mainTxt1 > .plus{transform: rotate(180deg); opacity: 0; z-index: -3;}
 header .focusTrigger2:focus ~ .mainTxt2 > .plus{transform: rotate(180deg); opacity: 0; z-index: -3;}
 header .focusTrigger3:focus ~ .mainTxt3 > .plus{transform: rotate(180deg); opacity: 0; z-index: -3;}
+
 
 @keyframes kill {
   from{display: none;}
