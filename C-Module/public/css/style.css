@@ -63,7 +63,7 @@ header{position: absolute; background-color: rgba(211, 211, 211, 0.637); /* top:
 header .headerIn{display: flex; justify-content: space-between; align-items: center; margin: 0 auto; width: 60%; height: 100px;}
 header .headerIn img{width: 150px; height: 50px;}
 
-header .dropdown{display: flex; justify-content: space-between; width: 630px; text-align: center;}
+header .dropdown{display: flex; justify-content: space-between; width: 750px; text-align: center;}
 header .dropdown ul li{height: 0; overflow: hidden; transition: .2s;}
 
 header .drop1{position: relative; width: 80px; height: 20px;}
@@ -458,9 +458,9 @@ svg{width: 400px; height: 900px;}
 
 /* 마이페이지 */
 
-#myPage{width: 100%; height: max-content; padding-top: 150px;}
+#myPage{display: flex; justify-content: center; width: 100%; height: max-content; padding-top: 150px;}
 #myPage .myRentBook{display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; width: max-content; height: max-content; padding: 10px;}
-#myPage .myRentRoom{width: max-content; height: max-content; padding: 10px;}
+#myPage .myRentRoom{width: 500px; height: 500px; padding: 10px; border: 1px solid;}
 
 #myPage .rentBook{width: 330px; height: 300px; border: 1px solid; border-radius: 15px; font-size: .8em;}
 #myPage .rentBook P{padding: 11px;}
@@ -483,10 +483,31 @@ svg{width: 400px; height: 900px;}
 
 
 
+/* 팝업 관리 */
+
+#popup{display: flex; justify-content: center; align-items: center; width: 100%; height: 700px; padding-top: 150px;}
+#popup input[type="submit"]{width: max-content; height: max-content; padding: 4px; border: 1px solid; border-radius: 10px;}
+#popup input:focus{outline: none;}
+
+#popup .popupFixDel{width: 500px; height: 500px; border: 1px solid;}
+
+
+/* 팝업 관리 */
+
+
+
 
 /* 도서대출 및 열람실예약 */
 
+#selectPage{width: 100%; height: max-content; display: flex; justify-content: space-around; padding-top: 150px;}
+#selectPage .userRentedBook{width: 500px; height: max-content; border: 1px solid;}
+#selectPage .userRentedBook ul li{padding: 5px;}
+#selectPage .userRentedRoom{width: 500px; height: 500px; border: 1px solid;}
 
+#selectPage .box1{display: flex; flex-direction: column;}
+#selectPage .box2{display: flex; flex-direction: column;}
+
+#selectPage .usersBook{border: 1px solid; text-align: center;}
 
 /* 도서대출 및 열람실예약 */
 

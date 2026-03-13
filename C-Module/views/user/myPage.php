@@ -23,7 +23,7 @@
   </div>
 
   <div class="myRentRoom">
-
+    <h2>내 열람실</h2>
   </div>
 
 </section>

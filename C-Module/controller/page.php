@@ -21,6 +21,27 @@ get('/newBook', function () {
   views("admin/newBook");
 });
 
+get('/popup', function () {
+  $popup = DB::fetchAll("
+    SELECT *
+    from popup
+  ");
+
+  views("admin/popup", compact("popup"));
+});
+
+get('/selectPage', function () {
+  $rentedBook = DB::fetchAll("
+    SELECT d.book_title as bookTitle, d.book_author as bookAuthor, r.rent_date as rentDay, r.return_date as returnDay, r.user_id as userId,
+    DATEDIFF(r.return_date, r.rent_date) as realDay
+    from dataroom d
+    join rent r
+    on d.idx = r.book_id
+  ");
+
+  views("admin/selectPage", compact("rentedBook"));
+});
+
 
 get('/dataRoom', function () {
   $bookData = DB::fetchAll("
@@ -34,7 +55,7 @@ get('/dataRoom', function () {
 });
 
 get('/myPage', function () {
-  if (!ss()) back("");
+  if (!ss()) back();
     $ssId = ss()->idx;
 
     $myPage =  DB::fetchAll("
@@ -104,7 +125,49 @@ post("/addBook", function() {
 
   move_uploaded_file($from, 'uploads/' . $img);
 
-  $bookAdd = DB::exec("INSERT INTO dataRoom (book_title, book_author, book_year, book_price, book_img, book_company) values ('$bookName', '$author', '$yaer', '$price', '$img', '$company')");
+  DB::exec("INSERT INTO dataRoom (book_title, book_author, book_year, book_price, book_img, book_company) values ('$bookName', '$author', '$yaer', '$price', '$img', '$company')");
 
   move("/", "책이 등록 되었습니다.");
+});
+
+
+post("/popupAdd", function() {
+  extract($_POST);
+
+  $from = $_FILES['img']['tmp_name'];
+  $img = $_FILES['img']['name'];
+
+  move_uploaded_file($from, 'uploads/'. $img);
+
+  DB::exec("INSERT into popup (title, content, startDay, endDay, img) values ('$title', '$content', '$startDay', '$endDay', '$img')");
+
+  back("팝업 등록 완료!");
+});
+
+
+post("/popupFix", function() {
+  extract($_POST);
+
+  $from = $_FILES['img']['tmp_name'];
+  $img = $_FILES['img']['name'];
+
+  move_uploaded_file($from, 'uploads/'. $img);
+
+  if($img = $_FILES['img']['name']){
+    DB::exec("UPDATE set popup title = '$title', content = '$content', startDay = '$startDay', endDay = '$endDay', img = '$img' ");
+  }else{
+    DB::exec("UPDATE set popup title = '$title', content = '$content', startDay = '$startDay', endDay = '$endDay' ");
+  }
+
+  back("팝업 수정 완료!");
+});
+
+
+
+post("/popupDel", function() {
+  extract($_POST);
+
+  DB::exec("DELETE from popup where idx = '$idx' ");
+  
+  back("팝업 삭제");
 });

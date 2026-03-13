@@ -63,7 +63,9 @@
                   </ul>
                 </div>
 
-                <div class="drop3 drop4">
+                <?php if(!ss()): ?>
+                <?php elseif(ss() -> id === "admin"): ?>
+                  <div class="drop3 drop4">
                   <input class="focusTrigger3">
                   <div class="mainTxt3">
                     도서관리자
@@ -72,15 +74,17 @@
                   </div>
                   <ul>
                     <li><a href="/newBook">신규도서등록</a></li>
-                    <li><a href="#">대출/열람실 업무조회</a></li>
+                    <li><a href="/selectPage">대출/열람실 업무조회</a></li>
                   </ul>
                 </div>
+                <?php endif; ?>
 
               <div class="headerBtns">
                 <?php if(!ss()): ?>
                   <a href="#" class="openLogin">로그인</a>
                   <a href="#" class="openJoin">회원가입</a>
                 <?php elseif(ss() -> id === "admin"): ?>
+                  <a href="/popup">팝업관리</a>
                   <p><?= ss() -> name ?></p>
                   <a href="/logout">로그아웃</a>
                 <?php else: ?>
