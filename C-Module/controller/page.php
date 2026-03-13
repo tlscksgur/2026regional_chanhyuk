@@ -31,8 +31,16 @@ get('/dataRoom', function() {
 
 get('/myPage', function() {
   $ssId = ss() -> idx;
-
-  $myPage =  DB::fetch("SELECT * from rent where user_id = $ssId");
+  
+  $myPage =  DB::fetch("
+        SELECT d.*, r.rent_day as rentDay, r.return_day as returnDay,
+        (r.rentDay - r.returnDay) as remainDay,
+        remainDay <= DATE_ADD(CURDATE(), INTERVAL 9 DAY)
+        from rent r
+        join dataroom d
+        on r.user_id = d.book_id
+        where user_id = $ssId
+      ");
 
   views("user/myPage", compact("myPage"));
 });
