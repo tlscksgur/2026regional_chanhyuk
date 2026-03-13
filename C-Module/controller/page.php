@@ -1,24 +1,28 @@
 <?php
 
-get('/', function() {
+get('/', function () {
   views("home");
 });
 
-get('/logout', function() {
+get('/logout', function () {
   session_destroy();
   back("로그아웃 되었습니다.");
 });
 
-get('/sub01', function() {
+get('/sub01', function () {
   views("sub01");
 });
 
-get('/libraryLive', function() {
+get('/libraryLive', function () {
   views("user/libraryLive");
 });
 
+get('/newBook', function () {
+  views("admin/newBook");
+});
 
-get('/dataRoom', function() {
+
+get('/dataRoom', function () {
   $bookData = DB::fetchAll("
     SELECT d.*, r.book_id as rented
     FROM dataroom d
@@ -29,50 +33,52 @@ get('/dataRoom', function() {
   views("user/dataRoom", compact("bookData"));
 });
 
-get('/myPage', function() {
-  $ssId = ss() -> idx;
-  
-  $myPage =  DB::fetch("
-        SELECT d.*, r.rent_day as rentDay, r.return_day as returnDay,
-        (r.rentDay - r.returnDay) as remainDay,
-        remainDay <= DATE_ADD(CURDATE(), INTERVAL 9 DAY)
+get('/myPage', function () {
+  if (!ss()) back("");
+    $ssId = ss()->idx;
+
+    $myPage =  DB::fetchAll("
+        SELECT d.*, r.rent_date as rentDay, r.return_date as returnDay,
+        DATEDIFF(r.return_date, CURDATE()) as remainDay
         from rent r
         join dataroom d
-        on r.user_id = d.book_id
-        where user_id = $ssId
+        on r.book_id = d.idx
+        where r.user_id = $ssId
       ");
 
-  views("user/myPage", compact("myPage"));
+    views("user/myPage", compact("myPage"));
 });
 
 
 
-post('/join', function() {
+post('/join', function () {
   extract($_POST);
 
   $user = DB::fetch("SELECT * from user where id = '$id'");
 
-  if(!$user) {
+  if (!$user) {
     DB::exec("INSERT into user (id, pw, name) values ('$id', '$pw', '$name')");
     move("/", "회원가입 되었습니다.");
-  }else{
+  } else {
     move("/", "이미 가입된 회원입니다.");
     return false;
   }
-
 });
 
-post('/login', function() {
+post('/login', function () {
   extract($_POST);
 
   $loginUser = DB::fetch("SELECT * from user where id = '$id' and pw = '$pw'");
-  if(!$loginUser) { back("아이디 또는 비밀번호가 일치하지 않습니다."); return false; }
+  if (!$loginUser) {
+    back("아이디 또는 비밀번호가 일치하지 않습니다.");
+    return false;
+  }
   $_SESSION['ss'] = $loginUser;
   back("로그인 되었습니다!");
 });
 
 
-post('/rentBook', function() {
+post('/rentBook', function () {
 
   $idx = $_POST['idx'];
   $userId = ss()->idx;
@@ -81,11 +87,24 @@ post('/rentBook', function() {
   move("/dataRoom", "대출되었습니다.");
 });
 
-post('/returnBook', function() {
+post('/returnBook', function () {
   extract($_POST);
 
   DB::exec("DELETE FROM rent where book_id = '$idx'");
-  
-  move("/dataRoom", "반납되었습니다.");
 
+  back("반납되었습니다.");
+});
+
+
+post("/addBook", function() {
+  extract($_POST);
+
+  $from = $_FILES['img']['tmp_name'];
+  $img = $_FILES['img']['name'];
+
+  move_uploaded_file($from, 'uploads/' . $img);
+
+  $bookAdd = DB::exec("INSERT INTO dataRoom (book_title, book_author, book_year, book_price, book_img, book_company) values ('$bookName', '$author', '$yaer', '$price', '$img', '$company')");
+
+  move("/", "책이 등록 되었습니다.");
 });

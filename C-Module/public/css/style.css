@@ -85,6 +85,8 @@ header .focusTrigger3:focus ~ ul li{height: 40px;}
 header .drop3:not(:hover) .focusTrigger3{animation: kill .01s forwards;}
 header .focusTrigger3 ~ ul:where(:active) li{height: 40px;}
 
+header .drop4 li{font-size: .8em;}
+
 header .focusTrigger1 ~ ul li:nth-child(1){padding-top: 7px;}
 header .focusTrigger2 ~ ul li:nth-child(1){padding-top: 7px;}
 header .focusTrigger3 ~ ul li:nth-child(1){padding-top: 7px;}
@@ -456,12 +458,38 @@ svg{width: 400px; height: 900px;}
 
 /* 마이페이지 */
 
-#myPage{width: 100%; height: 600px;}
-#myPage .myRentBook{width: max-content; height: max-content; padding: 10px;}
+#myPage{width: 100%; height: max-content; padding-top: 150px;}
+#myPage .myRentBook{display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; width: max-content; height: max-content; padding: 10px;}
 #myPage .myRentRoom{width: max-content; height: max-content; padding: 10px;}
+
+#myPage .rentBook{width: 330px; height: 300px; border: 1px solid; border-radius: 15px; font-size: .8em;}
+#myPage .rentBook P{padding: 11px;}
+#myPage .rentBook input[type="submit"]{width: max-content; height: max-content; padding: 4px; border: 1px solid; border-radius: 10px;}
 
 
 /* 마이페이지 */
+
+
+
+/* 도서 등록 */
+
+#newBook{width: 100%; height: max-content; min-height: 71vh; padding-top: 150px;}
+#newBook .bookAdd input[type="submit"]{position: absolute; left: 50%; transform: translateX(-50%); width: max-content; height: max-content; padding: 3px; border: 1px solid; border-radius: 10px;}
+#newBook .ab{width: 500px; margin: 15px auto;}
+#newBook .ab input{width: 300px;}
+#newBook .ab input:focus{outline: none;}
+
+/* 도서 등록 */
+
+
+
+
+/* 도서대출 및 열람실예약 */
+
+
+
+/* 도서대출 및 열람실예약 */
+
 
 
 
