@@ -1,7 +1,13 @@
 <?php
 
 get('/', function () {
-  views("home");
+  $popupData = DB::fetchAll("
+    SELECT *
+    FROM popup
+    where startDay < CURDATE() and endDay > CURDATE()
+  ");
+
+  views("home", compact("popupData"));
 });
 
 get('/logout', function () {
@@ -148,15 +154,15 @@ post("/popupAdd", function() {
 post("/popupFix", function() {
   extract($_POST);
 
-  $from = $_FILES['img']['tmp_name'];
-  $img = $_FILES['img']['name'];
-
-  move_uploaded_file($from, 'uploads/'. $img);
-
-  if($img = $_FILES['img']['name']){
-    DB::exec("UPDATE set popup title = '$title', content = '$content', startDay = '$startDay', endDay = '$endDay', img = '$img' ");
-  }else{
-    DB::exec("UPDATE set popup title = '$title', content = '$content', startDay = '$startDay', endDay = '$endDay' ");
+  if($_FILES['img']) {
+    $from = $_FILES['img']['tmp_name'];
+    $img = $_FILES['img']['name'];
+  }
+  
+  if(!$from){
+    DB::exec("UPDATE popup set title = '$title', content = '$content', startDay = '$startDay', endDay = '$endDay' where idx = '$idx' ");
+    }else{
+    DB::exec("UPDATE popup set title = '$title', content = '$content', startDay = '$startDay', endDay = '$endDay', img = '$img' where idx = '$idx' ");
   }
 
   back("팝업 수정 완료!");

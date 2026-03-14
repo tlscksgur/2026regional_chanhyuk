@@ -9,6 +9,23 @@
       <input type="checkbox" id="check" hidden>
       <label for="check">[닫기]</label>
   </div> -->
+  <div class="modalBox">
+    <?php foreach($popupData as $i => $popData): ?>
+    <div class="modal modal<?= $i ?>">
+        <img src="./images/<?= $popData -> img ?>" alt="<?= $popData -> title ?>" title="<?= $popData -> title ?>">
+        <p><?= $popData -> title ?></p>
+        <ul>
+          <li><?= $popData -> content ?></li>
+          <li><?= $popData -> startDay ?></li>
+          <li><?= $popData -> endDay ?></li>
+        </ul>
+        <input type="checkbox" id="check<?= $i ?>" hidden>
+        <label for="check<?= $i ?>">[닫기]</label>
+    </div>
+    <?php endforeach; ?>
+  </div>
+
+
 
   <section id="slide">
     <ul>
@@ -678,3 +695,24 @@
 
     </div>
   </section>
+
+
+<script src="./js/lib.js"></script>
+  
+<script>
+  const modal = $$(".modal")
+  const close = $$(".modal label")
+
+
+  close.forEach(Xbtn => {
+    Xbtn.onclick = () => {
+      Xbtn.parentElement.remove()
+    }
+  });
+
+  modal.forEach((m, i) => {
+    console.log(m);
+    m.style.left = `${i*400}px`
+  });
+
+</script>

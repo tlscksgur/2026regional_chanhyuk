@@ -20,7 +20,5 @@
     </footer>
 
   </div>
-  <script src="./js/lib.js"></script>
-  <script src="./js/sub.js"></script>
 </body>
 </html>

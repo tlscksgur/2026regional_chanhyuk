@@ -413,8 +413,17 @@ footer .footerBackground{position: absolute; inset: 0; width: 100%; height: 100%
 #modal ul li{font-size: .8em; padding-top: .4em;}
 #modal label{width: 60px; font-size: .9em; cursor: pointer; margin: 0 auto; display: flex; justify-content: center; margin-top: -27px;}
 #modal label:hover{font-weight: bold;}
-
 .container:has(#check:checked) #modal{display: none;}
+
+.modal{animation: modal .7s ease-in; position: fixed; top: 100px; transition: 1s; width: 330px; height: 450px; border: 1px solid #ffffff; border-radius: 15px; z-index: 1;}
+.modal img{width: 328px; border-radius: 15px 15px 0 0;}
+.modal p{font-size: .85em; text-align: center; margin-top: -5px; background-color: lightblue;}
+.modal ul{padding: 15px; height: 184px; background-color: lightblue; border-radius: 0px 0px 15px 15px;}
+.modal ul li{font-size: .8em; padding-top: .4em;}
+.modal label{width: 60px; font-size: .9em; cursor: pointer; margin: 0 auto; display: flex; justify-content: center; margin-top: -27px;}
+.modal label:hover{font-weight: bold;}
+
+.modalBox{display: grid; grid-template-columns: repeat(4, 1fr); width: 70%; height: 100%; margin: 0 auto;}
 
 @keyframes modal {
   from{transform: scale(1.1);}
@@ -483,19 +492,6 @@ svg{width: 400px; height: 900px;}
 
 
 
-/* 팝업 관리 */
-
-#popup{display: flex; justify-content: center; align-items: center; width: 100%; height: 700px; padding-top: 150px;}
-#popup input[type="submit"]{width: max-content; height: max-content; padding: 4px; border: 1px solid; border-radius: 10px;}
-#popup input:focus{outline: none;}
-
-#popup .popupFixDel{width: 500px; height: 500px; border: 1px solid;}
-
-
-/* 팝업 관리 */
-
-
-
 
 /* 도서대출 및 열람실예약 */
 
@@ -512,6 +508,20 @@ svg{width: 400px; height: 900px;}
 /* 도서대출 및 열람실예약 */
 
 
+
+
+/* 팝업 관리 */
+
+#popup{display: flex; justify-content: center; align-items: center; width: 100%; height: max-content; min-height: 71vh; padding-top: 150px;}
+#popup input[type="submit"]{width: max-content; height: max-content; padding: 4px; border: 1px solid; border-radius: 10px;}
+#popup input:focus{outline: none;}
+
+#popup .popupFixDel{width: 500px; height: max-content;}
+#popup .popupData{border: 1px solid;}
+#popup .popupData form[action=""]{border: 1px solid;}
+
+
+/* 팝업 관리 */
 
 
 /* 회원가입 */
