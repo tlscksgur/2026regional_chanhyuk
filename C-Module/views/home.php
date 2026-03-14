@@ -545,7 +545,7 @@
             </div>
             <div class="underBarParent">
               <p>30</p>
-              <span class="underBar2"></span>
+              <span class="underBar1"></span>
             </div>
             <div class="underBarParent">
               <p>01</p>

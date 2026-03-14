@@ -6,11 +6,9 @@ const $openLogin = $(".openLogin")
 
 const $close = $$(".close")
 
-if($joinModal) {
-  $openJoin.onclick = () => {
-    $joinModal.style.display = "block"
-    document.body.style.overflow = "hidden"
-  }
+$openJoin.onclick = () => {
+  $joinModal.style.display = "block"
+  document.body.style.overflow = "hidden"
 }
 
 $openLogin.onclick = () => {
