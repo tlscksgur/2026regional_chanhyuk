@@ -37,7 +37,7 @@
                   <ul>
                     <?php if(ss()): ?>
                       <li><a href="/dataRoom">자료실</a></li>
-                      <li><a href="#">열람실예약</a></li>
+                      <li><a href="/readingRoom">열람실예약</a></li>
                     <?php else: ?>
                       <li><a href="#">자료실</a></li>
                       <li><a href="#">열람실예약</a></li>

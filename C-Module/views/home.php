@@ -287,46 +287,47 @@
   </section>
 
   <section id="bookMark">
-    <p>◆</p>
-    <ul>
-      <li>
-        <a href="#">
-          <span class="fa fa-book"></span>
-          <p class="iconTitle">도서대출</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="fa fa-left-long"></span>
-          <p class="iconTitle">도서반납</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="fa fa-chair"></span>
-          <p class="iconTitle">좌석예약</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="fa fa-book-bookmark"></span>
-          <p class="iconTitle">희망도서신청</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="fab fa-bilibili"></span>
-          <p class="iconTitle">AI추천도서</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="fa fa-book-atlas"></span>
-          <p class="iconTitle">전자도서관</p>
-        </a>
-      </li>
-    </ul>
-  </section>
+      <p class="ft">자주찾는 도서 영역</p>
+      <p class="deco">◆</p>
+      <ul>
+        <li>
+          <a href="#">
+            <span class="fa fa-book"></span>
+            <p class="iconTitle">도서대출</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa fa-left-long"></span>
+            <p class="iconTitle">도서반납</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa fa-chair"></span>
+            <p class="iconTitle">좌석예약</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa fa-book-bookmark"></span>
+            <p class="iconTitle">희망도서신청</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fab fa-bilibili"></span>
+            <p class="iconTitle">AI추천도서</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa fa-book-atlas"></span>
+            <p class="iconTitle">전자도서관</p>
+          </a>
+        </li>
+      </ul>
+    </section>
 
   <section id="calender">
     <div class="calenderIn">
@@ -698,6 +699,8 @@
 
 
 <script src="./js/lib.js"></script>
+<script src="./js/sub.js"></script>
+
   
 <script>
   const modal = $$(".modal")

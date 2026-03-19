@@ -40,7 +40,9 @@
 .barBox span{width: 480px; height: 2px; border-top: 1px dotted var(--blue); }
 .barBox p{color: var(--red); font-size: 21px}
 
-.container{position: relative; width: 100%; min-height: 100vh;}
+.container{position: relative; width: 100%; min-height: 100vh; /* font-family: 'Noto Sans KR', sans-serif; */}
+
+
 /* 초기화 */
 
 

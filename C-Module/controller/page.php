@@ -20,14 +20,18 @@ get('/sub01', function () {
 });
 
 get('/libraryLive', function () {
+  if(!ss()) move('/');
   views("user/libraryLive");
 });
 
 get('/newBook', function () {
+  if(!ss() -> id === "admin") move('/');
   views("admin/newBook");
 });
 
 get('/popup', function () {
+  if(!ss() -> id === "admin") move('/');
+
   $popup = DB::fetchAll("
     SELECT *
     from popup
@@ -36,7 +40,16 @@ get('/popup', function () {
   views("admin/popup", compact("popup"));
 });
 
+
+get('/readingRoom', function () {
+  if(!ss()) move('/');
+  views("user/readingRoom");
+});
+
+
 get('/selectPage', function () {
+  if(!ss() -> id === "admin") move('/');
+
   $rentedBook = DB::fetchAll("
     SELECT d.book_title as bookTitle, d.book_author as bookAuthor, r.rent_date as rentDay, r.return_date as returnDay, r.user_id as userId,
     DATEDIFF(r.return_date, r.rent_date) as realDay
@@ -50,6 +63,8 @@ get('/selectPage', function () {
 
 
 get('/dataRoom', function () {
+  if(!ss()) move('/');
+
   $bookData = DB::fetchAll("
     SELECT d.*, r.book_id as rented
     FROM dataroom d
@@ -61,10 +76,11 @@ get('/dataRoom', function () {
 });
 
 get('/myPage', function () {
-  if (!ss()) back();
-    $ssId = ss()->idx;
+  if (!ss()) move('/');
+  
+  $ssId = ss()->idx;
 
-    $myPage =  DB::fetchAll("
+  $myPage =  DB::fetchAll("
         SELECT d.*, r.rent_date as rentDay, r.return_date as returnDay,
         DATEDIFF(r.return_date, CURDATE()) as remainDay
         from rent r
@@ -73,7 +89,7 @@ get('/myPage', function () {
         where r.user_id = $ssId
       ");
 
-    views("user/myPage", compact("myPage"));
+  views("user/myPage", compact("myPage"));
 });
 
 
@@ -123,7 +139,7 @@ post('/returnBook', function () {
 });
 
 
-post("/addBook", function() {
+post("/addBook", function () {
   extract($_POST);
 
   $from = $_FILES['img']['tmp_name'];
@@ -137,13 +153,13 @@ post("/addBook", function() {
 });
 
 
-post("/popupAdd", function() {
+post("/popupAdd", function () {
   extract($_POST);
 
   $from = $_FILES['img']['tmp_name'];
   $img = $_FILES['img']['name'];
 
-  move_uploaded_file($from, 'uploads/'. $img);
+  move_uploaded_file($from, 'uploads/' . $img);
 
   DB::exec("INSERT into popup (title, content, startDay, endDay, img) values ('$title', '$content', '$startDay', '$endDay', '$img')");
 
@@ -151,17 +167,17 @@ post("/popupAdd", function() {
 });
 
 
-post("/popupFix", function() {
+post("/popupFix", function () {
   extract($_POST);
 
-  if($_FILES['img']) {
+  if ($_FILES['img']) {
     $from = $_FILES['img']['tmp_name'];
     $img = $_FILES['img']['name'];
   }
-  
-  if(!$from){
+
+  if (!$from) {
     DB::exec("UPDATE popup set title = '$title', content = '$content', startDay = '$startDay', endDay = '$endDay' where idx = '$idx' ");
-    }else{
+  } else {
     DB::exec("UPDATE popup set title = '$title', content = '$content', startDay = '$startDay', endDay = '$endDay', img = '$img' where idx = '$idx' ");
   }
 
@@ -169,11 +185,45 @@ post("/popupFix", function() {
 });
 
 
-
-post("/popupDel", function() {
+post("/popupDel", function () {
   extract($_POST);
 
   DB::exec("DELETE from popup where idx = '$idx' ");
-  
+
   back("팝업 삭제");
+});
+
+post('/readingRoom', function () {
+  extract($_POST);
+
+  $userId = ss()->idx;
+  $rooms = explode(',', $selectedRoom);
+
+  if ($date < date("Y-m_d")) {
+    back("오늘 날짜 이전 일시는 입력할 수 없습니다!");
+    return;
+  }
+  
+  foreach($rooms as $room) {
+    $same = DB::fetch("
+        SELECT *
+        from readingRoom
+        where room_number = '$room'
+        and date = '$date'
+        and start_time < '$endTime'
+        and end_time > '$startTime'
+    ");
+
+    if($same) {
+      back("예약 시간이 겹칩니다.");
+      return;
+    }
+  };
+  
+  foreach ($rooms as $room){
+    DB::exec("INSERT INTO readingroom (userId, room_number, date, start_time, end_time) values ('$userId', '$room', '$date', '$startTime', '$endTime')");
+  };
+
+
+  back("예약이 완료되었습니다.");
 });
