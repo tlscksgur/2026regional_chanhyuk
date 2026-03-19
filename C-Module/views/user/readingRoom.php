@@ -127,7 +127,7 @@
           </div>
           <input type="submit" class="reserveBtn" value="예약하기">
       </div>` :
-      $(".reservation").innerHTML = "";
+      $(".reservation form").innerHTML = "";
 
       render()
     }
@@ -147,10 +147,12 @@
 
   document.onmouseup = () => isDrag = false
 
-  $(".reserveBtn").onclick = () => {
-    if(selected.size == 0) return;
-    selected.clear()
-    render()
+  if($(".reserveBtn")) {
+    $(".reserveBtn").onclick = () => {
+      if(selected.size == 0) return;
+      selected.clear()
+      render()
+    }
   }
 
 
