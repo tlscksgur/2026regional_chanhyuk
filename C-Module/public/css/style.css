@@ -437,10 +437,10 @@ footer .footerBackground{position: absolute; inset: 0; width: 100%; height: 100%
 
 /* 도서관 현황 */
 
-#libarayLive{display: flex; justify-content: center; align-items: center; width: 100%; height: 700px;}
+#libarayLive{display: flex; justify-content: center; align-items: center; width: 100%; min-height: 700px; padding-top: 150px;}
 #libarayLive .libarayLiveIn{width: 1200px;}
 
-svg{width: 400px; height: 900px;}
+svg{width: 400px; height: 750px;}
 
 .land{fill: #CCCCCC; fill-opacity: 1; stroke:white; stroke-opacity: 1; stroke-width: 0.5;}
 .land:hover{fill: #000;}
@@ -525,6 +525,7 @@ svg{width: 400px; height: 900px;}
 
 
 /* 열람실 */
+
 
 .reserved{background-color: var(--red);}
 .select{background-color: var(--blue);}
