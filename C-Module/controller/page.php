@@ -56,22 +56,29 @@ get('/readingRoom', function () {
 
 
 get('/selectPage', function () {
-  if(!ss() -> id === "admin") move('/');
+  if(!ss() && ss() -> id === "admin") move('/');
 
   $rentedBook = DB::fetchAll("
-    SELECT d.book_title as bookTitle, d.book_author as bookAuthor, r.rent_date as rentDay, r.return_date as returnDay, r.user_id as userId,
+    SELECT d.book_title as bookTitle, d.book_author as bookAuthor, d.idx as idx, r.rent_date as rentDay, r.return_date as returnDay, r.user_id as userId,
     DATEDIFF(r.return_date, r.rent_date) as realDay
     from dataroom d
     join rent r
     on d.idx = r.book_id
   ");
 
-  views("admin/selectPage", compact("rentedBook"));
+  $reservedRoom = DB::fetchAll("
+    select r.*, u.id as uid
+    from readingroom r
+    join user u
+    on r.userId = u.idx
+  ");
+
+  views("admin/selectPage", compact("rentedBook", "reservedRoom"));
 });
 
 
 get('/dataRoom', function () {
-  if(!ss()) move('/');
+  // if(!ss()) move('/');
 
   $bookData = DB::fetchAll("
     SELECT d.*, r.book_id as rented
@@ -146,6 +153,8 @@ post('/rentBook', function () {
 
 post('/returnBook', function () {
   extract($_POST);
+  
+  var_dump(extract($_POST));
 
   DB::exec("DELETE FROM rent where book_id = '$idx'");
 
@@ -205,6 +214,15 @@ post("/popupDel", function () {
   DB::exec("DELETE from popup where idx = '$idx' ");
 
   back("팝업 삭제");
+});
+
+
+post('/delRoom', function() {
+  extract($_POST);
+
+  DB::exec("DELETE from readingroom where idx = $delRoomIdx");
+
+  bacK("예약을 취소 시켰습니다!");
 });
 
 post('/readingRoom', function () {

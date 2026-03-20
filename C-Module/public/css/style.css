@@ -469,9 +469,9 @@ svg{width: 400px; height: 900px;}
 
 #myPage{display: flex; justify-content: center; width: 100%; height: max-content; padding-top: 150px;}
 #myPage .myRentBook{display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; width: max-content; height: max-content; padding: 10px;}
-#myPage .flexBox{display: flex; flex-direction: column;}
+#myPage .flexBox{display: flex; flex-direction: column; width: max-content; height: max-content; min-width: 500px; min-height: 500px; border: 1px solid #ddd;}
 
-#myPage .rentBook{width: 300px; height: 300px; border: 1px solid; border-radius: 15px; font-size: .8em;}
+#myPage .rentBook{width: 300px; height: max-content; min-height: 300px; border: 1px solid; border-radius: 15px; font-size: .8em;}
 #myPage .rentBook P{padding: 11px;}
 #myPage .rentBook input[type="submit"]{width: max-content; height: max-content; padding: 4px; border: 1px solid; border-radius: 10px;}
 
@@ -500,14 +500,23 @@ svg{width: 400px; height: 900px;}
 /* 도서대출 및 열람실예약 */
 
 #selectPage{width: 100%; height: max-content; display: flex; justify-content: space-around; padding-top: 150px;}
-#selectPage .userRentedBook{width: 500px; height: max-content; border: 1px solid;}
+#selectPage .userRentedBook{display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: max-content; min-width: 550px; height: 550px; border: 1px solid;}
+
+#selectPage .usersBook{width: 230px; height: max-content; min-height: 250px; padding: 5px; border: 1px solid; text-align: center; font-size: .7em;}
 #selectPage .userRentedBook ul li{padding: 5px;}
-#selectPage .userRentedRoom{width: 500px; height: 500px; border: 1px solid;}
 
 #selectPage .box1{display: flex; flex-direction: column;}
 #selectPage .box2{display: flex; flex-direction: column;}
 
-#selectPage .usersBook{border: 1px solid; text-align: center;}
+
+#selectPage .userRentedRoom{width: 500px; height: 500px; border: 1px solid;}
+#selectPage .userRentedRoom{display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; place-items: center; text-align: center; width: max-content; height: max-content; min-width: 600px; min-height: 500px;}
+#selectPage .roomBox{width: max-content; height: max-content; padding: 5px; border: 1px solid; border-radius: 10px; font-size: .8em;}
+#selectPage .roomBox p{padding: 4px;}
+
+#selectPage input[type="submit"]{border: 1px solid #ddd; border-radius: 5px; transition: .2s;}
+#selectPage input[type="submit"]:hover{border: 1px solid black;}
+
 
 /* 도서대출 및 열람실예약 */
 
