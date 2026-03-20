@@ -44,15 +44,14 @@ get('/popup', function () {
 get('/readingRoom', function () {
   if(!ss()) move('/');
 
-  $reservedRooms = DB::fetchAll("
-    SELECT room_number
-    from readingroom
-    where room_number in (select room_number from readingroom)"
-  );
+  // $reservedRooms = DB::fetchAll("    아니 예약된 좌석 예약 못하게 구현했는데 요구사항이 틀림
+  //   SELECT room_number
+  //   from readingroom
+  //   where room_number in (select room_number from readingroom)"
+  // );
+  // $reservedRoom = array_column($reservedRooms, 'room_number');
 
-  $reservedRoom = array_column($reservedRooms, 'room_number');
-
-  views("user/readingRoom", compact('reservedRoom'));
+  views("user/readingRoom");
 });
 
 
@@ -98,7 +97,13 @@ get('/myPage', function () {
         where r.user_id = $ssId
       ");
 
-  views("user/myPage", compact("myPage"));
+  $myRoom = DB::fetchAll("
+    select *
+    from readingroom
+    where userId = $ssId
+  ");
+
+  views("user/myPage", compact("myPage", "myRoom"));
 });
 
 
