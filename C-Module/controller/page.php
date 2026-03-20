@@ -43,7 +43,16 @@ get('/popup', function () {
 
 get('/readingRoom', function () {
   if(!ss()) move('/');
-  views("user/readingRoom");
+
+  $reservedRooms = DB::fetchAll("
+    SELECT room_number
+    from readingroom
+    where room_number in (select room_number from readingroom)"
+  );
+
+  $reservedRoom = array_column($reservedRooms, 'room_number');
+
+  views("user/readingRoom", compact('reservedRoom'));
 });
 
 
