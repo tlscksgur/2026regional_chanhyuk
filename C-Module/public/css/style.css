@@ -445,6 +445,14 @@ svg{width: 550px; height: 800px;}
 .land{fill: #CCCCCC; fill-opacity: 1; stroke:white; stroke-opacity: 1; stroke-width: 0.5;}
 .land:hover{fill: var(--blue);}
 
+#libarayLive .tooltip{display: none; position: absolute; width: max-content; height: max-content; padding: 5px; border-radius: 5px; background-color: lightgray; font-size: .6em; white-space: pre;}
+
+
+#libarayLive thead{height: 15px; background-color: #676767;}
+#libarayLive thead th{font-size: .7em; padding: 7px; color: #fff;}
+#libarayLive tbody{font-size: .7em;}
+
+
 /* 도서관 현황 */
 
 
