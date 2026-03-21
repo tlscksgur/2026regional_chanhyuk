@@ -33,7 +33,7 @@
 
       <div class="mapSearch">
         <div class="ctrl">
-          <input type="text" class="searchInput">
+          <input type="text" class="searchInput" placeholder="도서관명 검색">
           <select class="orderBy">
             <option value="">시도명 오름차순</option>
             <option value="desc">자료수(도서) 내림차순</option>
