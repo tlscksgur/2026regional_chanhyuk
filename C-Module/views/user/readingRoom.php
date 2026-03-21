@@ -100,7 +100,8 @@
   let selected = new Set()
 
   const $seats = $$(".seat")
-  
+
+  const resevedData = <?= json_encode($res) ?>;
 
   function render() {
     $(".reserveRoom").textContent = "예약선택: ";
@@ -109,6 +110,14 @@
     });
     $(".reserveRoom").textContent += [...selected] + "번";
   }
+
+  // 툴팁
+  $seats.forEach((seat, i) => {
+    const info = resevedData[i + 1];
+    
+    if(!info) return;
+    seat.dataset.tooltip = info.join('\n');
+  })
 
   $seats.forEach(seat => {
     seat.onmousedown = () => {

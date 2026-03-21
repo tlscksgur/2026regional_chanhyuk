@@ -2,13 +2,6 @@ const $mapContainer = $(".mapContainer");
 
 const libs = await $fetch("./json/도서관현황.json");
 
-await fetch("./southKoreaHigh.svg")
-.then(res => res.text())
-.then(text => {
-  $mapContainer.innerHTML = text
-  return text;
-});
-
 
 const libState = libs.reduce((acc, lib) => {
   acc[lib["시도명"]] ??= {libCount: 0, seatCount: 0, bookCount: 0};

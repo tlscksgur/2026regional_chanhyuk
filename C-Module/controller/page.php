@@ -44,14 +44,21 @@ get('/popup', function () {
 get('/readingRoom', function () {
   if(!ss()) move('/');
 
-  // $reservedRooms = DB::fetchAll("    아니 예약된 좌석 예약 못하게 구현했는데 요구사항이 틀림
-  //   SELECT room_number
-  //   from readingroom
-  //   where room_number in (select room_number from readingroom)"
-  // );
-  // $reservedRoom = array_column($reservedRooms, 'room_number');
+  $reserved = DB::fetchAll("
+    SELECT *
+    from readingroom
+    where date >= CURDATE()
+    or (date = CURDATE() and end_time > CURTIME())
+    order by date desc, start_time desc
+  ");
 
-  views("user/readingRoom");
+  $res = [];
+
+  foreach($reserved as $r) {
+    $res[$r -> room_number][] = "{$r -> date} {$r -> start_time}~{$r -> end_time}";
+  };
+
+  views("user/readingRoom", compact("res"));
 });
 
 
@@ -133,10 +140,12 @@ post('/login', function () {
   extract($_POST);
 
   $loginUser = DB::fetch("SELECT * from user where id = '$id' and pw = '$pw'");
+  
   if (!$loginUser) {
     back("아이디 또는 비밀번호가 일치하지 않습니다.");
     return false;
   }
+
   $_SESSION['ss'] = $loginUser;
   back("로그인 되었습니다!");
 });
