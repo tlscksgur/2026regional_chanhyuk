@@ -1,6 +1,5 @@
     <footer>
       <div class="footerIn">
-        <div class="footerBackground"></div>
         <ul>
           <li>문의전화안내</li>
           <li>1644-8000</li>
@@ -16,8 +15,11 @@
           <li><p class="fab fa-reddit-alien"></p></li>
           <li><p class="fab fa-qq"></p></li>
         </ul>
+        <p class="footerDeco1">◆</p>
+        <p class="footerDeco2">◆</p>
       </div>
     </footer>
+
   </div>
 </body>
 </html>
