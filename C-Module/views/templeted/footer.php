@@ -1,5 +1,6 @@
     <footer>
       <div class="footerIn">
+        <img src="./logo/logo1.png" alt="logo" title="logo">
         <ul>
           <li>문의전화안내</li>
           <li>1644-8000</li>
