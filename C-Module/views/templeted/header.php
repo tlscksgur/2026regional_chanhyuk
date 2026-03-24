@@ -11,7 +11,7 @@
   <div class="container">
     <header>
        <div class="headerIn">
-        <a href="/home"><img src="./logo/logo.png" alt="logo" title="logo"></a>
+        <a href="/home"><img src="./logo/logo1.png" alt="logo" title="logo"></a>
           <div class="push">
             <div class="dropdown">
                 <div class="drop1">

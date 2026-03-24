@@ -104,7 +104,7 @@ get('/myPage', function () {
 
   $myPage =  DB::fetchAll("
         SELECT d.*, r.rent_date as rentDay, r.return_date as returnDay,
-        DATEDIFF(r.return_date, CURDATE()) as remainDay
+        DATEDIFF(r.return_date, CURDATE()) as remainDay, book_id
         from rent r
         join dataroom d
         on r.book_id = d.idx
