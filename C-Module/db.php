@@ -12,11 +12,11 @@ class db {
   }
 
   static function fetch($query) {
-    return self::getDB()->query($query)->fetch();
+    return self::getDB()->query($query)->fetch(PDO::FETCH_OBJ);
   }
 
   static function fetchAll($query) {
-    return self::getDB()->query($query)->fetchAll();
+    return self::getDB()->query($query)->fetchAll(PDO::FETCH_OBJ);
   }
 
 }

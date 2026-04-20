@@ -434,10 +434,10 @@ footer .footerDeco2{position: absolute; bottom: -10px; left: 100%; color: var(--
 /* 도서관 현황 */
 
 #libarayLive{display: flex; justify-content: center; align-items: center; width: 100%; min-height: 700px; padding-top: 150px;}
-#libarayLive .libarayLiveIn{width: 1200px;}
+#libarayLive .libarayLiveIn{width: 1200px; flex-direction: column; gap: 6px; align-items: center;}
 
-.mapContainer{width: 100%; height: max-content;}
-svg{display: block; width: 550px; height: 800px; margin: 0 auto;}
+.mapContainer{width: 100%; height: max-content; margin-top: -6px;}
+.mapContainer svg{display: block; width: 550px; height: 800px; margin: 0 auto;}
 
 .land{fill: #CCCCCC; fill-opacity: 1; stroke:white; stroke-opacity: 1; stroke-width: 0.5;}
 .land:hover{fill: var(--blue);}

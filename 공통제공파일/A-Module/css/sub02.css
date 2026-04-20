@@ -1,0 +1,53 @@
+*{scrollbar-width: none;margin: 0;padding: 0;list-style: none;text-decoration: none;color: inherit;box-sizing: border-box;}
+.sale-price{text-decoration: line-through;}
+
+@font-face {
+  font-family: fontawsome;
+  src: url(../../공통/fontawesome/fonts/fontawesome-webfont.ttf);
+}
+.container-html{font-family: fontawsome;}
+
+header{position: fixed; width: 100%; height: 110px; background-color: rgba(211, 211, 211, 0.623); z-index: 100;}
+.header-in{display: flex; justify-content: space-around; align-items: center; width: 100%; height: 110px;}
+
+.drop>ul{display: flex; justify-content: space-between; width: 350px; height: 0px;}
+.drop>ul>li{width: 115px; height: 40px; text-align: center; line-height: 40px; background-color: aqua;}
+.drop>ul>li:hover .sub{height: 120px; background-color: antiquewhite;}
+
+.sub li{width: 115px; height: 40px;}
+.sub{overflow: hidden; height: 0px;}
+
+.header-btn ul{display: flex; justify-content: space-between; width: 300px;}
+
+
+/* ----------헤더--------- */
+
+.all-product>ul li:nth-child(1){font-weight: bold; text-align: center;}
+.all-product>ul li:nth-child(2) img{width: 248px;}
+.all-product>ul li:nth-child(3){padding: 10px; font-size: 10px; height: 40px;}
+
+section{padding-top: 120px;}
+.all-product{display: flex; justify-content: center; flex-wrap: wrap; gap: 100px;}
+.all-product > ul{width: 250px; height: 440px; border: 1px solid; border-radius: 5px;}
+
+.all-product a{display: block; width: 50px; height: 20px; background-color: rgb(182, 252, 21); border-radius: 10px; font-size: 12px;}
+#btn-box{display: flex; justify-content: center; margin: 50px 0px 5px 0px;}
+/* --------section--------- */
+
+
+footer{width: 100%; height: 400px; font-size: 15px; background: linear-gradient(pink, rgb(255, 103, 103));}
+.footer-in{display: flex; justify-content: space-evenly; align-items: center; width: 100%; height: 400px;}
+
+.big-box1{margin-top: 100px;}
+.big-box2{margin-top: 100px;}
+
+.ul1{display: flex; justify-content: center;}
+.ul2{display: flex; justify-content: center;}
+.ul3{display: flex; justify-content: center;}
+.ul4{text-align: center;}
+.ul5{text-align: center;}
+.ul6{display: flex; justify-content: space-between; width: 200px; margin: 0 auto;}
+
+/* -----------popup--------- */
+
+.popup-open{margin-left: 950px; background-color: skyblue; border: none; border-radius: 5px; font-weight: bold; color: #ffffff;}

@@ -1,5 +1,5 @@
 <section id="libarayLive">
-  <div class="libarayLiveIn center fd">
+  <div class="libarayLiveIn center">
     <h2 class="right mfont">Map</h2>
       <div class="barBox">
         <span></span>

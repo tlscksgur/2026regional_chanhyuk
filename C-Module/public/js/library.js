@@ -25,11 +25,12 @@ const nameMap = {
   충청북도: "충북",
   충청남도: "충남",
   전라북도: "전북",
+  전북특별자치도: "전북",
   전라남도: "전남",
   경상북도: "경북",
   경상남도: "경남",
   제주특별자치도: "제주",
-  세종특별자치시: "세종",
+  세종특별자치시: "세종", 
 };
 
 const posOffset = {
@@ -54,7 +55,7 @@ const percent = (value, key) => {
 }
 
 const barColor = { libCount: "#3B82F6", bookCount: "#EF4444", seatCount: "#22C55E" };
-const barLabel = { libCount: "도서관수", bookCount: "자료수(도서)", seatCount: "열람좌석순" };
+const barLabel = { libCount: "도서관수", bookCount: "자료수(도서)", seatCount: "열람좌석수" };
 
 const tooltip = $(".tooltip");
 

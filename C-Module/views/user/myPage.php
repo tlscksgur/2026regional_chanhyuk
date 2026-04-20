@@ -38,3 +38,18 @@
     </table>
   </div>
 </section>
+
+<div class="myRentRoom">
+    <h2>내 열람실</h2>
+    <div class="gridBox">
+      <?php foreach($myRoom as $i => $mr): ?>
+        <div class="mRoom mr<?= $i ?>">
+          <p>좌석번호: <strong><?= $mr -> room_number ?></strong></p>
+          <p>예약일: <strong><?= $mr -> date ?></strong></p>
+          <p>시작시간: <strong><?= $mr -> start_time ?></strong></p>
+          <p>종료시간: <strong><?= $mr -> end_time ?></strong></p>
+          <p>예약자 아이디: <strong><?= ss() -> idx ?></strong></p>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
